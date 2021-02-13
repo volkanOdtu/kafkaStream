@@ -1,0 +1,29 @@
+server:
+  port: 8093
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: demo.topic
+          content-type: application/text
+          group: demoConsumer
+          binder: kafka1
+        output:
+          destination: demo.topic
+          binder: kafka1
+        customInput:
+          destination: demo.custom.topic
+          content-type: application/text
+          group: demoCustomConsumer
+          binder: kafka1
+        customOutput:
+          destination: demo.custom.topic
+          binder: kafka1
+      binders:
+         kafka1:
+           type: kafka
+           brokers: localhost:9092
+           
+      
